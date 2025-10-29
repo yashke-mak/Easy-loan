@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Easy Loans Application</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 600px; margin: 40px auto; padding: 20px; }
+    h1 { color: #007bff; text-align: center; }
+    label { display: block; margin-top: 10px; }
+    input, textarea, select { width: 100%; padding: 8px; margin-top: 5px; border-radius: 6px; border: 1px solid #ccc; }
+    button { margin-top: 15px; padding: 10px; background: #007bff; color: white; border: none; border-radius: 6px; cursor: pointer; }
+    button:hover { background: #0056b3; }
+    .note { background: #e8f4ff; padding: 10px; border-left: 4px solid #007bff; margin-bottom: 15px; }
+  </style>
+</head>
+<body>
+  <h1>Easy Loans Application</h1>
+  <form id="loanForm">
+    <label>Full Name:</label><input type="text" required />
+    <label>Age:</label><input type="number" min="18" required />
+    <label>Date of Birth:</label><input type="date" required />
+    <label>ID Number:</label><input type="text" required />
+    <label>Email:</label><input type="email" required />
+    <label>Guarantor's Number:</label><input type="tel" required />
+    <label>Purpose of Loan:</label><textarea required></textarea>
+    <label>Loan Amount (KES):</label><input type="number" min="1000" step="1000" required />
+    <div class="note">
+      Please make a payment of <strong>KES 180</strong> to <strong>011 06 94 395</strong> (Easy Loans).<br>
+      Then paste your <strong>M-Pesa confirmation message</strong> below.
+    </div>
+    <label>M-Pesa Confirmation Message:</label><textarea required></textarea>
+    <button type="submit">Submit Application</button>
+  </form>
+
+  <script>
+    document.getElementById('loanForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const loanId = "EASY-" + Date.now();
+      window.location.href = `thank-you.html?loan=${encodeURIComponent(loanId)}`;
+    });
+  </script>
+</body>
+</html>
